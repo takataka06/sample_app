@@ -6,6 +6,7 @@ class SessionsController < ApplicationController
     if user && user.authenticate(params[:session][:password])# authenticateメソッドはユーザーのパスワードを検証します
       #ユーザーがデータベースにあり、かつ、認証に成功した場合にのみ
       reset_session # セッションをリセットしてセキュリティを強化
+      params[:session][:remember_me] == '1' ? remember(user) : forget(user)
       log_in user
       redirect_to user # ログイン成功時にユーザープロフィールへリダイレクト
     else
@@ -15,7 +16,7 @@ class SessionsController < ApplicationController
   end
 
   def destroy
-    log_out
+    log_out if logged_in? # ログインしている場合はログアウト処理を実行
     redirect_to root_url, status: :see_other
   end
 end

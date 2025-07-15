@@ -9,10 +9,10 @@ class UsersEditTest < ActionDispatch::IntegrationTest
     @other_user = users(:archer)
   end
 
-  test "should redirect edit when logged in as wrong user" do
-    log_in_as(@user)
+  test "successful edit with friendly forwarding" do
     get edit_user_path(@user)
-    assert_template 'users/edit'
+    log_in_as(@user)
+    assert_redirected_to edit_user_url(@user)
     patch user_path(@user), params: { user: { name:  "",
                                               email: "foo@invalid",
                                               password:              "foo",

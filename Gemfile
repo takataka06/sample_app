@@ -9,8 +9,11 @@ gem "rails",           "7.0.4.3"
 gem "bcrypt",          "3.1.18"
 gem "bootstrap-sass",  "3.4.1"
 gem "sassc-rails",     "2.1.2"
+gem "faker",           "2.21.0"
 gem "sprockets-rails", "3.4.2"
 gem "importmap-rails", "1.1.5"
+gem "will_paginate",           "3.3.1"
+gem "bootstrap-will_paginate", "1.0.0"
 gem "turbo-rails",     "1.4.0"
 gem "stimulus-rails",  "1.2.1"
 gem "jbuilder",        "2.11.5"
@@ -40,6 +43,7 @@ group :test do
   gem "minitest-reporters",       "1.6.0"
   gem "guard",                    "2.18.0"
   gem "guard-minitest",           "2.4.6"
+  
 end
 
 # Windows ではタイムゾーン情報用の tzinfo-data gem を含める必要があります
